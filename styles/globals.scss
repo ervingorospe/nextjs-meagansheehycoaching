@@ -1,0 +1,293 @@
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,200;0,7..72,300;0,7..72,400;0,7..72,500;0,7..72,600;0,7..72,700;0,7..72,800;0,7..72,900;1,7..72,200;1,7..72,300;1,7..72,400;1,7..72,500;1,7..72,600;1,7..72,700;1,7..72,800;1,7..72,900&display=swap');
+
+
+@tailwind base;
+@tailwind components;
+
+
+@layer components {
+  .button {
+    @apply cursor-pointer items-center justify-center rounded-md border-2 border-transparent px-6 py-2 tracking-wider text-base font-semibold shadow-sm transition-colors duration-150 focus:outline-none focus:ring-2 focus:ring-offset-2;
+  }
+/*
+define different button sizes
+button-sm, button-lg, button-xl etc.
+you can change the size of the button per breakpoint
+class="button button-sm md:button-base xl:button-xl"
+*/
+  .button-base {
+    @apply text-base;
+  }
+
+  .button-xs {
+    @apply px-3 py-1 text-xs;
+  }
+
+  .button-sm {
+    @apply px-4 py-1.5 text-sm;
+  }
+
+  .button-lg {
+    @apply px-6 py-2 text-lg;
+  }
+
+  .button-xl {
+    @apply px-7 py-2.5 text-xl;
+  }
+
+  .button-2xl {
+    @apply px-8 py-2.5 text-2xl;
+  }
+}
+
+
+@tailwind utilities;
+
+.pattern-primary {
+  background-size: 4rem;
+  background-image: url("data:image/svg+xml,%3Csvg fill='%23ffffff' fill-opacity='0.5' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 212.19 182.02'%0A%3E%3Cg id='Logos'%3E%3Cg%3E%3Cpath d='M159.34,175.01v-.91h-1.06v2.73c0,1.78,0,3.51,0,5.19h1.07c0-1.68,0-3.41,0-5.19v-1.82Z' /%3E%3Cpath d='M106.22,137.36v-1.06c-26.37,0-39.61,0-46.1-6.48-6.48-6.48-6.48-19.72-6.48-46.1h-1.06c0,26.37,0,39.61-6.48,46.1-6.48,6.48-19.72,6.48-46.1,6.48v1.06c26.37,0,39.61,0,46.1,6.48,5.8,5.8,6.41,17.01,6.48,38.18h1.08c.06-21.17,.68-32.38,6.48-38.18,6.48-6.48,19.72-6.48,46.1-6.48Z' /%3E%3Cpath d='M211.66,22.29l-.78,.45c-.51,.29-1.01,.59-1.51,.87-24.95,14.4-37.59,21.56-43.74,18.01-5.77-3.33-6.23-16.3-6.27-41.62h-1.07c-.04,25.33-.51,38.3-6.27,41.62-6.15,3.55-18.79-3.61-43.74-18.01-.5-.29-1-.58-1.52-.87l-.78-.45-.53,.92,.78,.45c.51,.3,1.02,.59,1.53,.88,24.94,14.4,37.45,21.77,37.45,28.87s-12.52,14.47-37.45,28.87c-.51,.29-1.02,.59-1.53,.88l-.78,.45,.53,.92,.78-.45c.51-.29,1.01-.59,1.51-.87,24.95-14.4,37.59-21.56,43.74-18.01,6.15,3.55,6.27,18.05,6.27,46.81v2.73h1.06v-2.73c0-28.76,.13-43.26,6.27-46.81,6.15-3.55,18.8,3.61,43.75,18.01,.5,.29,1,.58,1.51,.87l.78,.45,.27-.46,.27-.46-.78-.45c-.51-.3-1.02-.59-1.53-.88-24.94-14.4-37.45-21.77-37.45-28.87s12.52-14.47,37.46-28.87c.5-.29,1.01-.58,1.52-.88l.78-.45-.27-.46-.27-.46Z' /%3E%3Cpath d='M53.64,7.92c0-2.79,0-5.42,0-7.92h-1.08c0,2.5,0,5.13,0,7.92h1.06Z' /%3E%3C/g%3E%3C/g%3E%3C/svg%3E%0A");
+}
+
+/*
+shared button styles
+
+here in the CSS you define the padding, rounded corners, borders, casing, tracking etc.
+
+the actual bg color,text color and hover colors are defined within the classes of the actual HTML elements
+ */
+.image {
+  object-fit: contain;
+  width: 100% !important;
+  position: relative !important;
+  height: auto !important;
+}
+
+
+
+@layer base {
+  .button-animation {
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    transition: color 250ms ease-in-out;
+    
+    &:after {
+      content: '';
+      position: absolute;
+      display: block;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 0;
+      height: 100%;
+      border:none !important;
+      background: theme('colors.primary.700');
+      z-index: -1;
+      transition: width 250ms ease-in-out;
+    }
+    
+    &:hover {
+      color: #fff;
+      &:after {
+        width: 110%;
+      }
+    }
+  }
+
+  .light-navigation-theme {
+    --text-header-color: theme('colors.gray.800');
+    --text-header-hover-color: theme('colors.gray.900');
+    --fill-color: theme('colors.transparent');
+    --button-fill-color: theme('colors.primary.700');
+    --button-hover-color: theme('colors.primary.800');
+    --button-text-color: theme('colors.white');
+    --button-primary-hero-text: theme(colors.gray.800);
+    --button-primary-hero-background: theme(colors.primary.700);
+    --button-primary-hero-border: theme(colors.gray.800);
+    --button-primary-hero-background-hover: theme(colors.primary.800);
+    --button-primary-hero-border-hover: theme(colors.primary.700);
+    --button-primary-hero-text-hover: theme(colors.white);
+    --button-secondary-hero-text: theme(colors.primary.900);
+    --button-secondary-hero-background: theme(colors.white);
+    --button-secondary-hero-border: theme(colors.white);
+    --button-secondary-hero-background-hover: theme(colors.gray.100);
+    --button-secondary-hero-border-hover: theme(colors.gray.100);
+  }
+
+  .scroll-navigation-theme {
+    --text-header-color: theme('colors.gray.800');
+    --text-header-hover-color: theme('colors.gray.900');
+    --fill-color: theme('colors.white');
+    --button-fill-color: theme('colors.primary.700');
+    --button-hover-color: theme('colors.primary.800');
+    --button-text-color: theme('colors.white');
+    --button-primary-hero-text: theme(colors.gray.800);
+    --button-primary-hero-background: theme(colors.primary.700);
+    --button-primary-hero-border: theme(colors.gray.800);
+    --button-primary-hero-background-hover: theme(colors.primary.800);
+    --button-primary-hero-border-hover: theme(colors.primary.700);
+    --button-primary-hero-text-hover: theme(colors.white);
+    --button-secondary-hero-text: theme(colors.primary.900);
+    --button-secondary-hero-background: theme(colors.white);
+    --button-secondary-hero-border: theme(colors.white);
+    --button-secondary-hero-background-hover: theme(colors.gray.100);
+    --button-secondary-hero-border-hover: theme(colors.gray.100);
+  }
+
+  .dark-navigation-theme {
+    --text-header-color: theme('colors.primary.500');
+    --text-header-hover-color: theme('colors.primary.600');
+    --fill-color: theme('colors.transparent');
+    --button-fill-color: theme('colors.primary.500');
+    --button-hover-color: theme('colors.primary.600');
+    --button-text-color: theme('colors.white');
+    --button-primary-hero-text: theme(colors.gray.800);
+    --button-primary-hero-background: theme(colors.primary.700);
+    --button-primary-hero-border: theme(colors.gray.800);
+    --button-primary-hero-background-hover: theme(colors.primary.800);
+    --button-primary-hero-border-hover: theme(colors.primary.700);
+    --button-primary-hero-text-hover: theme(colors.white);
+    --button-secondary-hero-text: theme(colors.primary.900);
+    --button-secondary-hero-background: theme(colors.white);
+    --button-secondary-hero-border: theme(colors.white);
+    --button-secondary-hero-background-hover: theme(colors.gray.100);
+    --button-secondary-hero-border-hover: theme(colors.gray.100);
+  }
+
+  .light-section-theme {
+    --text-section-title: theme(colors.gray.900);
+    --text-section-subtitle: theme(colors.primary.700);
+    --text-section-body: theme(colors.gray.900);
+    --button-section-primary-text: theme(colors.white);
+    --button-section-primary-background: theme(colors.primary.700);
+    --button-section-primary-border: theme(colors.primary.700);
+    --button-section-primary-background-hover: theme(colors.primary.800);
+    --button-section-primary-border-hover: theme(colors.primary.800);
+    --button-section-primary-text-hover: theme(colors.white);
+    --button-section-secondary-text: theme(colors.primary.700);
+    --button-section-secondary-background: theme(colors.transparent);
+    --button-section-secondary-border: theme(colors.primary.700);
+    --button-section-secondary-background-hover: theme(colors.primary.700);
+    --button-section-secondary-border-hover: theme(colors.primary.700);
+    --button-section-secondary-text-hover: theme(colors.white);
+
+    --text-footer-title: theme(colors.gray.900);
+    --text-footer-body: theme(colors.gray.700);
+    --button-footer-text: theme(colors.white);
+    --button-footer-background: theme(colors.primary.800);
+    --button-footer-border: theme(colors.primary.800);
+    --button-footer-background-hover: theme(colors.primary.900);
+    --button-footer-border-hover: theme(colors.primary.900);
+    --button-footer-secondary-text: theme(colors.gray.900);
+    --button-footer-secondary-background: theme(colors.white);
+    --button-footer-secondary-border: theme(colors.white);
+    --button-footer-secondary-background-hover: theme(colors.gray.200);
+    --button-footer-secondary-border-hover: theme(colors.gray.200);
+
+    --text-email-signup-title: theme(colors.gray.900);
+    --text-email-signup-body: theme(colors.gray.900);
+    --button-email-signup-text: theme(colors.gray.900);
+    --button-email-signup-background: theme(colors.primary.700);
+    --button-email-signup-border: theme(colors.primary.700);
+    --button-email-signup-background-hover: theme(colors.primary.800);
+    --button-email-signup-border-hover: theme(colors.primary.800);
+
+    --text-cta-title: theme(colors.gray.900);
+    --text-cta-subtitle: theme(colors.gray.900);
+    --text-cta-body: theme(colors.gray.900);
+    --button-cta-text: theme(colors.white);
+    --button-cta-background: theme(colors.primary.700);
+    --button-cta-border: theme(colors.primary.700);
+    --button-cta-background-hover: theme(colors.primary.800);
+    --button-cta-border-hover: theme(colors.primary.800);
+
+    --text-hero-title: theme(colors.gray.900);
+    --text-hero-subtitle: theme(colors.gray.900);
+    --text-hero-body: theme(colors.gray.900);
+    --button-primary-hero-text: theme(colors.gray.800);
+    --button-primary-hero-background: theme(colors.primary.700);
+    --button-primary-hero-border: theme(colors.gray.800);
+    --button-primary-hero-background-hover: theme(colors.primary.800);
+    --button-primary-hero-border-hover: theme(colors.primary.700);
+    --button-primary-hero-text-hover: theme(colors.white);
+    --button-secondary-hero-text: theme(colors.primary.900);
+    --button-secondary-hero-background: theme(colors.white);
+    --button-secondary-hero-border: theme(colors.white);
+    --button-secondary-hero-background-hover: theme(colors.gray.100);
+    --button-secondary-hero-border-hover: theme(colors.gray.100);
+  }
+
+  .dark-section-theme {
+    --text-section-title: theme(colors.gray.900);
+    --text-section-subtitle: theme(colors.primary.700);
+    --text-section-body: theme(colors.gray.900);
+    --button-section-primary-text: theme(colors.white);
+    --button-section-primary-background: theme(colors.primary.700);
+    --button-section-primary-border: theme(colors.primary.700);
+    --button-section-primary-background-hover: theme(colors.primary.800);
+    --button-section-primary-border-hover: theme(colors.primary.800);
+    --button-section-primary-text-hover: theme(colors.white);
+    --button-section-secondary-text: theme(colors.primary.700);
+    --button-section-secondary-background: theme(colors.transparent);
+    --button-section-secondary-border: theme(colors.primary.700);
+    --button-section-secondary-background-hover: theme(colors.primary.700);
+    --button-section-secondary-border-hover: theme(colors.primary.700);
+    --button-section-secondary-text-hover: theme(colors.white);
+    
+    --text-footer-title: theme(colors.white);
+    --text-footer-body: theme(colors.gray.200);
+    --button-footer-text: theme(colors.white);
+    --button-footer-background: theme(colors.primary.800);
+    --button-footer-border: theme(colors.primary.800);
+    --button-footer-background-hover: theme(colors.primary.900);
+    --button-footer-border-hover: theme(colors.primary.900);
+    --button-footer-secondary-text: theme(colors.gray.900);
+    --button-footer-secondary-background: theme(colors.white);
+    --button-footer-secondary-border: theme(colors.white);
+    --button-footer-secondary-background-hover: theme(colors.gray.200);
+    --button-footer-secondary-border-hover: theme(colors.gray.200);
+
+    --text-email-signup-title: theme(colors.white);
+    --text-email-signup-body: theme(colors.white);
+    --button-email-signup-text: theme(colors.white);
+    --button-email-signup-background: theme(colors.primary.700);
+    --button-email-signup-border: theme(colors.primary.700);
+    --button-email-signup-background-hover: theme(colors.primary.800);
+    --button-email-signup-border-hover: theme(colors.primary.800);
+
+    --text-cta-title: theme(colors.white);
+    --text-cta-subtitle: theme(colors.white);
+    --text-cta-body: theme(colors.white);
+    --button-cta-text: theme(colors.gray.900);
+    --button-cta-background: theme(colors.white);
+    --button-cta-border: theme(colors.white);
+    --button-cta-background-hover: theme(colors.gray.100);
+    --button-cta-border-hover: theme(colors.gray.100);
+    
+    --text-hero-title: theme(colors.white);
+    --text-hero-subtitle: theme(colors.white);
+    --text-hero-body: theme(colors.white);
+    --button-primary-hero-text: theme(colors.white);
+    --button-primary-hero-background: theme(colors.primary.300);
+    --button-primary-hero-border: theme(colors.primary.300);
+    --button-primary-hero-background-hover: theme(colors.primary.400);
+    --button-primary-hero-border-hover: theme(colors.primary.400);
+    --button-secondary-hero-text: theme(colors.primary.900);
+    --button-secondary-hero-background: theme(colors.white);
+    --button-secondary-hero-border: theme(colors.white);
+    --button-secondary-hero-background-hover: theme(colors.gray.100);
+    --button-secondary-hero-border-hover: theme(colors.gray.100);
+  }
+
+  .nav-link:after {
+    display:block;
+    content: '';
+    border-bottom: solid 3px var(--text-header-hover-color);  
+    transform: scaleX(0); 
+    transition: transform 250ms ease-in-out;
+  }
+  
+  .nav-link:after{  transform-origin: 50% 100%; }
+  .nav-link:hover:after { transform: scaleX(1); }
+}

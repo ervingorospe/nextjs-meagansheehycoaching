@@ -1,0 +1,37 @@
+{
+  "name": "meagansheehycoaching",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build && next-sitemap  --config next-sitemap.config.js",
+    "postbuild": "next-sitemap  --config next-sitemap.config.js",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@headlessui/react": "^1.7.3",
+    "@heroicons/react": "^2.0.12",
+    "@tailwindcss/aspect-ratio": "^0.4.2",
+    "@tailwindcss/forms": "^0.5.3",
+    "@tailwindcss/line-clamp": "^0.4.2",
+    "@tailwindcss/typography": "^0.5.7",
+    "autoprefixer": "^10.4.12",
+    "js-cookie": "^3.0.1",
+    "lodash": "^4.17.21",
+    "moment": "^2.29.4",
+    "next": "12.3.1",
+    "next-sitemap": "^3.1.29",
+    "postcss": "^8.4.18",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "sass": "^1.56.0",
+    "tailwindcss": "^3.2.0"
+  },
+  "devDependencies": {
+    "@svgr/webpack": "^6.5.0",
+    "eslint": "8.25.0",
+    "eslint-config-next": "12.3.1",
+    "url-loader": "^4.1.1"
+  }
+}
